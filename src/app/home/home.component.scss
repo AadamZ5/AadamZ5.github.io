@@ -1,0 +1,17 @@
+.card-container{
+    margin: 50px auto;
+    width: fit-content;
+    max-width: 1500px;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: center;
+
+}
+
+.card-item{
+    max-width: 400px;
+    margin: 10px 10px;
+    flex: 1 1 initial
+}

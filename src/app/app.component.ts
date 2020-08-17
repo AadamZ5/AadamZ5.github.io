@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {BreakpointObserver, Breakpoints} from '@angular/cdk/layout';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,16 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'my-website';
+  title = 'My Website';
+
+  nav_open: boolean = false;
+  
+  constructor(private bpo: BreakpointObserver){
+    
+  }
+
+  get_nav_mode(){
+    return this.bpo.isMatched('(max-width: 599px)') ? "over" : "side";
+  }
+
 }

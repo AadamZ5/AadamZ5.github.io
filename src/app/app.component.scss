@@ -1,0 +1,38 @@
+
+
+.toolbar-nav{
+
+}
+
+.content-container{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    overflow: hidden;
+
+    .toolbar{
+        flex: 0 0 auto;
+    }
+
+    .content{
+        flex-grow: 1;
+        overflow-y: auto;
+    }
+}
+
+.toolbar-title{
+    .rank{
+        font-weight: lighter;
+        font-style: italic;
+    }
+}
+
+.root-container{
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+}
