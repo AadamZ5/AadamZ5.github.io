@@ -1,0 +1,23 @@
+.about-root{
+    box-sizing: content-box;
+    margin: 6vh 20px 20px 20px;
+    width: auto;
+}
+
+.about-header{
+    width: fit-content;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.about-content{
+    margin: 6vh auto;
+    width: fit-content;
+    max-width: 1500px;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    align-items: self-start;
+    justify-content: center;
+
+}

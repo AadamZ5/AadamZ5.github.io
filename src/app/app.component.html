@@ -1,4 +1,4 @@
-<mat-sidenav-container class="root-container">
+<mat-sidenav-container class="root-container mat-app-background">
   <mat-sidenav [mode]="get_nav_mode()" [(opened)]="nav_open">
     <div>
       <mat-nav-list style="height: 100%; width: 200px;">
@@ -8,7 +8,7 @@
     </div>
   </mat-sidenav>
   <mat-sidenav-content class="content-container">
-    <mat-toolbar class="toolbar">
+    <mat-toolbar class="toolbar" color="primary">
       <div class="toolbar-nav">
         <button mat-icon-button (click)="nav_open = !nav_open">
           <mat-icon>
@@ -17,7 +17,7 @@
         </button>
       </div>
       <div class="toolbar-title">
-        <span>Aadam Zocolo</span>&nbsp;&nbsp;<span class="rank">Student</span>
+        <span>Aadam Zocolo</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="rank">Student</span>
       </div>
     </mat-toolbar>
 

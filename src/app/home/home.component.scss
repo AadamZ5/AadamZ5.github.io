@@ -1,11 +1,36 @@
+.home-root{
+    box-sizing: content-box;
+    margin: 6vh 20px 20px 20px;
+    width: auto;
+}
+
+.home-header{
+    width: fit-content;
+    max-width: 900px;
+    margin: 0 auto;
+
+    .htitle{
+
+    }
+
+    .hcontent{
+        //text-align: center;
+    }
+}
+
+.home-header-button{
+    width: fit-content;
+    margin: 0 auto;
+}
+
 .card-container{
-    margin: 50px auto;
+    margin: 6vh auto;
     width: fit-content;
     max-width: 1500px;
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
-    align-items: flex-start;
+    align-items: self-start;
     justify-content: center;
 
 }

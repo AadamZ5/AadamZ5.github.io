@@ -12,7 +12,7 @@
 // Define the palettes for your theme using the Material Design palettes available in palette.scss
 // (imported above). For each palette, you can optionally specify a default, lighter, and darker
 // hue. Available color palettes: https://material.io/design/color/
-$my-website-primary: mat-palette($mat-purple, 900);
+$my-website-primary: mat-palette($mat-indigo, 400);
 $my-website-accent: mat-palette($mat-pink, A200, A100, A400);
 
 // The warn palette is optional (defaults to red).
@@ -35,5 +35,11 @@ $my-website-theme: mat-dark-theme((
 
 /* You can add global styles to this file, and also import other style files */
 
-html, body { height: 100%; background-color: rgb(53, 53, 53); }
+html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+a{
+  color: mat-color($my-website-accent, 300);
+}
+a:visited{
+  color: mat-color($my-website-accent, 600);
+}
