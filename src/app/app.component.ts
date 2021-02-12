@@ -16,7 +16,7 @@ export class AppComponent {
   }
 
   get_nav_mode(){
-    return this.bpo.isMatched('(max-width: 599px)') ? "over" : "side";
+    return this.bpo.isMatched('(max-width: 999px)') ? "over" : "side";
   }
 
 }
