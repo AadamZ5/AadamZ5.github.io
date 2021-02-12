@@ -13,6 +13,9 @@ import { MatIconModule } from "@angular/material/icon";
 import { MatListModule } from "@angular/material/list";
 import { MatCardModule } from "@angular/material/card";
 
+//Other imports
+import { NgxMasonryModule } from "ngx-masonry";
+
 //Our components
 import { HomeComponent } from './home/home.component';
 import { AboutComponent } from './about/about.component';
@@ -35,6 +38,9 @@ import { AboutComponent } from './about/about.component';
     MatIconModule,
     MatListModule,
     MatCardModule,
+
+    //Other Modules
+    NgxMasonryModule
     
   ],
   providers: [],

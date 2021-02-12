@@ -32,50 +32,97 @@
             </div>
         </div>
     </div>
-    <div #card_container class="card-container" [@card-trigger]="show_cards ? 'shown' : 'hidden'" *ngIf="show_cards">
-        
-        <!-- Programatticalistically generated mat-cards. Please edit home.component.ts to change the content displayed here. -->
-        <mat-card *ngFor="let i of items" class="card-item">
-            <img mat-card-image *ngIf="i.image_src" [src]="i.image_src"/>
-            <mat-card-title *ngIf="i.title">
-                {{i.title}}
-            </mat-card-title>
-            <mat-card-content style="white-space:pre-line;">{{i.text}}</mat-card-content>
-            <mat-card-actions *ngIf="i.actions" align="start">
-                <div style="margin-left: 5px; margin-bottom: 5px;">
-                    <div *ngFor="let a of i.actions" style="display: inline-block; margin-right: 7px;">
-                        <!-- All of these IF statements are esentially a switch statement for what kind of button style to use -->
-                        <button *ngIf="(a.style == 'basic') || (a.style == undefined)" mat-button (click)="a.callback ? a.callback($event) : null" [color]="a.color">
-                            <mat-icon *ngIf="a.icon">{{a.icon}}</mat-icon>
-                            <span *ngIf="a.label">{{a.label}}</span>
-                        </button>
-                        <button *ngIf="(a.style == 'raised')" mat-raised-button (click)="a.callback ? a.callback($event) : null" [color]="a.color">
-                            <mat-icon *ngIf="a.icon">{{a.icon}}</mat-icon>
-                            <span *ngIf="a.label">{{a.label}}</span>
-                        </button>
-                        <button *ngIf="(a.style == 'stroked')" mat-stroked-button (click)="a.callback ? a.callback($event) : null" [color]="a.color">
-                            <mat-icon *ngIf="a.icon">{{a.icon}}</mat-icon>
-                            <span *ngIf="a.label">{{a.label}}</span>
-                        </button>
-                        <button *ngIf="(a.style == 'flat')" mat-flat-button (click)="a.callback ? a.callback($event) : null" [color]="a.color">
-                            <mat-icon *ngIf="a.icon">{{a.icon}}</mat-icon>
-                            <span *ngIf="a.label">{{a.label}}</span>
-                        </button>
-                        <button *ngIf="(a.style == 'icon')" mat-icon-button (click)="a.callback ? a.callback($event) : null" [color]="a.color">
-                            <mat-icon *ngIf="a.icon">{{a.icon}}</mat-icon>
-                            <span *ngIf="a.label">{{a.label}}</span>
-                        </button>
-                        <button *ngIf="(a.style == 'fab')" mat-fab (click)="a.callback ? a.callback($event) : null" [color]="a.color">
-                            <mat-icon *ngIf="a.icon">{{a.icon}}</mat-icon>
-                            <span *ngIf="a.label">{{a.label}}</span>
-                        </button>
-                        <button *ngIf="(a.style == 'minifab')" mat-mini-fab (click)="a.callback ? a.callback($event) : null" [color]="a.color">
-                            <mat-icon *ngIf="a.icon">{{a.icon}}</mat-icon>
-                            <span *ngIf="a.label">{{a.label}}</span>
-                        </button>
+    <div class="card-container-masonry-wrapper" [@card-trigger]="show_cards ? 'shown' : 'hidden'" *ngIf="show_cards">
+        <ngx-masonry class="card-container-masonry" [options]="this.masonry_options">
+            <!-- Programatticalistically generated mat-cards. Please edit home.component.ts to change the content displayed here. -->
+            <mat-card ngxMasonryItem *ngFor="let i of items" class="card-item">
+                <img mat-card-image *ngIf="i.image_src" [src]="i.image_src"/>
+                <mat-card-title *ngIf="i.title">
+                    {{i.title}}
+                </mat-card-title>
+                <mat-card-content style="white-space:pre-line;">{{i.text}}</mat-card-content>
+                <mat-card-actions *ngIf="i.actions" align="start">
+                    <div style="margin-left: 5px; margin-bottom: 5px;">
+                        <div *ngFor="let a of i.actions" style="display: inline-block; margin-right: 7px;">
+                            <!-- All of these IF statements are esentially a switch statement for what kind of button style to use -->
+                            <button *ngIf="(a.style == 'basic') || (a.style == undefined)" mat-button (click)="a.callback ? a.callback($event) : null" [color]="a.color">
+                                <mat-icon *ngIf="a.icon">{{a.icon}}</mat-icon>
+                                <span *ngIf="a.label">{{a.label}}</span>
+                            </button>
+                            <button *ngIf="(a.style == 'raised')" mat-raised-button (click)="a.callback ? a.callback($event) : null" [color]="a.color">
+                                <mat-icon *ngIf="a.icon">{{a.icon}}</mat-icon>
+                                <span *ngIf="a.label">{{a.label}}</span>
+                            </button>
+                            <button *ngIf="(a.style == 'stroked')" mat-stroked-button (click)="a.callback ? a.callback($event) : null" [color]="a.color">
+                                <mat-icon *ngIf="a.icon">{{a.icon}}</mat-icon>
+                                <span *ngIf="a.label">{{a.label}}</span>
+                            </button>
+                            <button *ngIf="(a.style == 'flat')" mat-flat-button (click)="a.callback ? a.callback($event) : null" [color]="a.color">
+                                <mat-icon *ngIf="a.icon">{{a.icon}}</mat-icon>
+                                <span *ngIf="a.label">{{a.label}}</span>
+                            </button>
+                            <button *ngIf="(a.style == 'icon')" mat-icon-button (click)="a.callback ? a.callback($event) : null" [color]="a.color">
+                                <mat-icon *ngIf="a.icon">{{a.icon}}</mat-icon>
+                                <span *ngIf="a.label">{{a.label}}</span>
+                            </button>
+                            <button *ngIf="(a.style == 'fab')" mat-fab (click)="a.callback ? a.callback($event) : null" [color]="a.color">
+                                <mat-icon *ngIf="a.icon">{{a.icon}}</mat-icon>
+                                <span *ngIf="a.label">{{a.label}}</span>
+                            </button>
+                            <button *ngIf="(a.style == 'minifab')" mat-mini-fab (click)="a.callback ? a.callback($event) : null" [color]="a.color">
+                                <mat-icon *ngIf="a.icon">{{a.icon}}</mat-icon>
+                                <span *ngIf="a.label">{{a.label}}</span>
+                            </button>
+                        </div>
                     </div>
-                </div>
-            </mat-card-actions>
-        </mat-card>
+                </mat-card-actions>
+            </mat-card>
+        </ngx-masonry>
     </div>
+    <!-- <div #card_container class="card-container" [@card-trigger]="show_cards ? 'shown' : 'hidden'" *ngIf="show_cards">
+        
+            <!-- Programatticalistically generated mat-cards. Please edit home.component.ts to change the content displayed here. -|->
+            <mat-card *ngFor="let i of items" class="card-item">
+                <img mat-card-image *ngIf="i.image_src" [src]="i.image_src"/>
+                <mat-card-title *ngIf="i.title">
+                    {{i.title}}
+                </mat-card-title>
+                <mat-card-content style="white-space:pre-line;">{{i.text}}</mat-card-content>
+                <mat-card-actions *ngIf="i.actions" align="start">
+                    <div style="margin-left: 5px; margin-bottom: 5px;">
+                        <div *ngFor="let a of i.actions" style="display: inline-block; margin-right: 7px;">
+                            <!-- All of these IF statements are esentially a switch statement for what kind of button style to use -|->
+                            <button *ngIf="(a.style == 'basic') || (a.style == undefined)" mat-button (click)="a.callback ? a.callback($event) : null" [color]="a.color">
+                                <mat-icon *ngIf="a.icon">{{a.icon}}</mat-icon>
+                                <span *ngIf="a.label">{{a.label}}</span>
+                            </button>
+                            <button *ngIf="(a.style == 'raised')" mat-raised-button (click)="a.callback ? a.callback($event) : null" [color]="a.color">
+                                <mat-icon *ngIf="a.icon">{{a.icon}}</mat-icon>
+                                <span *ngIf="a.label">{{a.label}}</span>
+                            </button>
+                            <button *ngIf="(a.style == 'stroked')" mat-stroked-button (click)="a.callback ? a.callback($event) : null" [color]="a.color">
+                                <mat-icon *ngIf="a.icon">{{a.icon}}</mat-icon>
+                                <span *ngIf="a.label">{{a.label}}</span>
+                            </button>
+                            <button *ngIf="(a.style == 'flat')" mat-flat-button (click)="a.callback ? a.callback($event) : null" [color]="a.color">
+                                <mat-icon *ngIf="a.icon">{{a.icon}}</mat-icon>
+                                <span *ngIf="a.label">{{a.label}}</span>
+                            </button>
+                            <button *ngIf="(a.style == 'icon')" mat-icon-button (click)="a.callback ? a.callback($event) : null" [color]="a.color">
+                                <mat-icon *ngIf="a.icon">{{a.icon}}</mat-icon>
+                                <span *ngIf="a.label">{{a.label}}</span>
+                            </button>
+                            <button *ngIf="(a.style == 'fab')" mat-fab (click)="a.callback ? a.callback($event) : null" [color]="a.color">
+                                <mat-icon *ngIf="a.icon">{{a.icon}}</mat-icon>
+                                <span *ngIf="a.label">{{a.label}}</span>
+                            </button>
+                            <button *ngIf="(a.style == 'minifab')" mat-mini-fab (click)="a.callback ? a.callback($event) : null" [color]="a.color">
+                                <mat-icon *ngIf="a.icon">{{a.icon}}</mat-icon>
+                                <span *ngIf="a.label">{{a.label}}</span>
+                            </button>
+                        </div>
+                    </div>
+                </mat-card-actions>
+            </mat-card>
+        </div> -->
 </div>

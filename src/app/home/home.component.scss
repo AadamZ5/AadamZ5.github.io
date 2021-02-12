@@ -62,11 +62,26 @@
     flex-direction: row;
     align-items: self-start;
     justify-content: center;
+}
 
+.card-container-masonry{
+    z-index: 1;
+    margin: 0 auto;
+    height: auto;
+    // display: flex;
+    // flex-wrap: wrap;
+    // flex-direction: row;
+    // align-items: self-start;
+    // justify-content: center;
+}
+
+.card-container-masonry-wrapper{
+    margin: 6vh auto;
+    max-width: 1200px;
 }
 
 .card-item{
-    max-width: 400px;
+    max-width: 260px;
     margin: 10px 10px;
     flex: 1 1 initial
 }

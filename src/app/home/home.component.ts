@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { trigger, state, style, animate, transition } from "@angular/animations";
 import { Router } from '@angular/router';
 import { BreakpointObserver } from '@angular/cdk/layout';
+import { NgxMasonryOptions } from 'ngx-masonry';
 
 interface Action{
   label?: string,
@@ -59,7 +60,7 @@ const card_trigger = trigger("card-trigger", [
 export class HomeComponent implements OnInit {
 
   show_cards: boolean = false;
-  
+
   items: CardItem[] = [
     {
       title: "Pride",
@@ -101,6 +102,10 @@ export class HomeComponent implements OnInit {
       ]
     }
   ];
+
+  masonry_options: NgxMasonryOptions = {
+    fitWidth: true,
+  }
 
   constructor(private router: Router, private bpo: BreakpointObserver) {
     
