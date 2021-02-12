@@ -3,28 +3,37 @@
 
 <div class="home-root">
 
-    <div class="home-header">
-        <div class="htitle">
-            <h1 class="mat-display-3"><b>Hello!</b></h1>
-        </div>
-        <div class="hcontent">
-            <p>Thanks for visiting my personal website! I've designed, created, and laid out a couple of pages for you to explore using the navigation menu up at the top left. </p>
-            <p>
-                I am a back-end developer at heart, but I hope to become a well versed full-stack developer. This website was designed using <a href="https://angular.io/">Angular 10</a> because of the organized and
-                functional framework it provides. 
-            </p>
-            
-            <div *ngIf="!show_cards">
-                <p>I'd like to share with you some of my core values. Click the button below to see them appear.</p>
-                <div class="home-header-button">
-                    <button mat-stroked-button color="primary" (click)="show_cards = !show_cards;">Explore core values</button>
+    <div class="home-backing mat-elevation-z5">
+        <div class="image-split">
+            <div class="picture-wrapper">
+                <img src="assets/pictures/my_bust_square.jpeg" class="picture">
+            </div>
+            <div class="home-header">
+                <div class="htitle">
+                    <h1 class="mat-display-3"><b>Hello!</b></h1>
+                </div>
+                <div class="hcontent">
+                    <p>Thanks for visiting my personal website! I've designed, created, and laid out a couple of pages for you to explore using the navigation menu up at the top left. </p>
+                    <p>
+                        I am a back-end developer at heart, but I have experience working on front-end, and I'm constantly learning.
+                    </p>
+                    <p>
+                        This website was designed using <a href="https://angular.io/">Angular 11</a> because of the organized and
+                        functional framework it provides. 
+                    </p>
+                    
+                    <div *ngIf="!show_cards">
+                        <p>I'd like to share with you some of my core values. Click the button below to see them appear.</p>
+                        <div class="home-header-button">
+                            <button mat-stroked-button color="primary" (click)="show_cards = true;">Explore core values</button>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-
     <div #card_container class="card-container" [@card-trigger]="show_cards ? 'shown' : 'hidden'" *ngIf="show_cards">
-    
+        
         <!-- Programatticalistically generated mat-cards. Please edit home.component.ts to change the content displayed here. -->
         <mat-card *ngFor="let i of items" class="card-item">
             <img mat-card-image *ngIf="i.image_src" [src]="i.image_src"/>
