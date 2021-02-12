@@ -10,12 +10,12 @@
             </div>
             <div class="home-header">
                 <div class="htitle">
-                    <h1 class="mat-display-3"><b>Hello!</b></h1>
+                    <h1 class="mat-display-3" [style.margin.bottom]="this.is_tiny() ? 16 : 64"><b>Hello!</b></h1>
                 </div>
                 <div class="hcontent">
-                    <p>Thanks for visiting my personal website! I've designed, created, and laid out a couple of pages for you to explore using the navigation menu up at the top left. </p>
+                    <p>Thanks for visiting my personal website! I am working on designing, creating, and laying out a couple of pages for you to explore using the navigation menu up at the top left. </p>
                     <p>
-                        I am a back-end developer at heart, but I have experience working on front-end, and I'm constantly learning.
+                        I am a back-end developer at heart, but I have experience working on front-end, and I'm constantly learning. I love to work across the whole stack.
                     </p>
                     <p>
                         This website was designed using <a href="https://angular.io/">Angular 11</a> because of the organized and
@@ -23,7 +23,7 @@
                     </p>
                     
                     <div *ngIf="!show_cards">
-                        <p>I'd like to share with you some of my core values. Click the button below to see them appear.</p>
+                        <p>Click the button to see some of the values I hold against my professional work.</p>
                         <div class="home-header-button">
                             <button mat-stroked-button color="primary" (click)="show_cards = true;">Explore core values</button>
                         </div>

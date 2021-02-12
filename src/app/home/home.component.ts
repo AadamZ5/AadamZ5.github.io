@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { trigger, state, style, animate, transition } from "@angular/animations";
 import { Router } from '@angular/router';
+import { BreakpointObserver } from '@angular/cdk/layout';
 
 interface Action{
   label?: string,
@@ -68,7 +69,7 @@ export class HomeComponent implements OnInit {
     },
     {
       title: "Efficiency",
-      text: `Efficiency is important. If there is a more elegant, more meaningful way to get something done, it should be done.`
+      text: `Efficiency of the working solution is important. If there is a more elegant, more meaningful way to execute a solution, it should be done.`
     },
     {
       title: "Integrity",
@@ -101,11 +102,15 @@ export class HomeComponent implements OnInit {
     }
   ];
 
-  constructor(private router: Router) {
+  constructor(private router: Router, private bpo: BreakpointObserver) {
     
   }
 
   ngOnInit(): void {
+  }
+
+  is_tiny(){
+    return this.bpo.isMatched('(max-width: 599px)');
   }
 
 }
