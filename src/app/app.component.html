@@ -1,29 +1,32 @@
-<mat-sidenav-container class="root-container mat-app-background">
-  <mat-sidenav [mode]="get_nav_mode()" [(opened)]="nav_open">
-    <div>
-      <mat-nav-list style="height: 100%; width: 200px;">
-        <a mat-list-item routerLink="">Home</a>
-        <a mat-list-item routerLink="about">About</a>
-      </mat-nav-list>
-    </div>
-  </mat-sidenav>
-  <mat-sidenav-content class="content-container">
-    <mat-toolbar class="toolbar" color="primary">
-      <div class="toolbar-nav">
-        <button mat-icon-button (click)="nav_open = !nav_open">
-          <mat-icon>
-            menu
-          </mat-icon>
-        </button>
-      </div>
-      <div class="toolbar-title">
-        <span>Aadam Zocolo</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="rank">Student</span>
-      </div>
-    </mat-toolbar>
 
-    <div class="content">
-      <router-outlet></router-outlet>
+<div class="root-container">
+  <mat-toolbar class="toolbar" color="primary">
+    <div class="toolbar-nav">
+      <button *ngIf="(nav_pinned | async) === false" mat-icon-button (click)="nav_open = !nav_open">
+        <mat-icon>
+          menu
+        </mat-icon>
+      </button>
     </div>
-
-  </mat-sidenav-content>
-</mat-sidenav-container>
+    <div class="toolbar-title">
+      <span>{{legalName | async}}</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="rank">{{currentPositionTitle | async}}</span>
+    </div>
+  </mat-toolbar>
+  <mat-sidenav-container class="sidenav mat-app-background">
+    <mat-sidenav [mode]="nav_type | async" [opened]="nav_open || (nav_pinned | async)">
+      <div>
+        <mat-nav-list style="height: 100%; width: 200px;">
+          <a mat-list-item routerLink="">Home</a>
+          <a mat-list-item routerLink="about">About</a>
+        </mat-nav-list>
+      </div>
+    </mat-sidenav>
+    <mat-sidenav-content class="content-container">
+  
+      <div class="content">
+        <router-outlet></router-outlet>
+      </div>
+  
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</div>
