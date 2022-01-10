@@ -1,0 +1,20 @@
+
+<div class="root-container">
+    <mat-sidenav-container class="sidenav mat-app-background">
+        <mat-sidenav #rootSidenav>
+          <div>
+            <mat-nav-list style="height: 100%; width: 200px;">
+              <a mat-list-item routerLink="home">Home</a>
+              <a mat-list-item routerLink="about">About</a>
+            </mat-nav-list>
+          </div>
+        </mat-sidenav>
+        <mat-sidenav-content class="content-container">
+      
+          <div class="content">
+            <router-outlet></router-outlet>
+          </div>
+      
+        </mat-sidenav-content>
+      </mat-sidenav-container>
+  </div>

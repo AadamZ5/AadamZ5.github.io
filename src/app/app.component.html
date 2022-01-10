@@ -2,7 +2,7 @@
 <div class="root-container">
   <mat-toolbar class="toolbar" color="primary">
     <div class="toolbar-nav">
-      <button *ngIf="(nav_pinned | async) === false" mat-icon-button (click)="nav_open = !nav_open">
+      <button *ngIf="(navPinned$ | async) === false" mat-icon-button (click)="toggleNav()">
         <mat-icon>
           menu
         </mat-icon>
@@ -12,7 +12,7 @@
       <span>{{legalName | async}}</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="rank">{{currentPositionTitle | async}}</span>
     </div>
   </mat-toolbar>
-  <mat-sidenav-container class="sidenav mat-app-background">
+  <!-- <mat-sidenav-container class="sidenav mat-app-background">
     <mat-sidenav [mode]="nav_type | async" [opened]="nav_open || (nav_pinned | async)">
       <div>
         <mat-nav-list style="height: 100%; width: 200px;">
@@ -28,5 +28,10 @@
       </div>
   
     </mat-sidenav-content>
-  </mat-sidenav-container>
+  </mat-sidenav-container> -->
+  
+  <div class="router-content">
+    <router-outlet></router-outlet>
+  </div>
+  
 </div>
