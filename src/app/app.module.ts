@@ -15,16 +15,13 @@ import { MatCardModule } from "@angular/material/card";
 
 //Other imports
 import { NgxMasonryModule } from "ngx-masonry";
+import { SIDENAV_HOOK_PROVIDER } from './sidenav-hook';
 
-//Our components
-import { HomeComponent } from './home/home.component';
-import { AboutComponent } from './about/about.component';
+
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent,
-    AboutComponent
   ],
   imports: [
     BrowserModule,
@@ -41,9 +38,11 @@ import { AboutComponent } from './about/about.component';
 
     //Other Modules
     NgxMasonryModule
-    
+
   ],
-  providers: [],
+  providers: [
+    SIDENAV_HOOK_PROVIDER,
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
