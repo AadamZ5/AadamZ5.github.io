@@ -13,12 +13,12 @@ import { SidenavHook } from '../sidenav-hook';
 })
 export class PublicComponent implements AfterViewInit {
 
-  title = 'My Website';
-  nav_open: boolean = false;
-
+  /**The current position title of me */
   currentPositionTitle: Observable<string>;
+  /**My legal name (Observable isn't really logically necessary here at all) */
   legalName: Observable<string>;
 
+  /**The sidenav for the public module / component */
   @ViewChild('rootSidenav')
   rootSidenav: MatSidenav | undefined;
 

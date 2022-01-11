@@ -12,16 +12,23 @@ import { defer } from 'rxjs';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements AfterViewInit {
-  title = 'My Website';
-  //nav_open: boolean = false;
 
+  /**The title that the browser will use */
+  title = 'My Website';
+
+  /**If the sidenav is wanted open */
   navWantOpen: boolean = false;
+  /**The stream of if the sidenav is wanted open */
   navWantOpen$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
 
+  /**Stream of if the sidenav is pinned (forced open) */
   navPinned$: Observable<boolean>;
+  /**The nav expansion type */
   navType$: Observable<"over" | "side">;
 
+  /**The current position title of me */
   currentPositionTitle: Observable<string>;
+  /**My legal name (Observable isn't really logically necessary here at all) */
   legalName: Observable<string>;
 
   constructor(
@@ -54,6 +61,7 @@ export class AppComponent implements AfterViewInit {
 
   ngAfterViewInit(): void {
 
+    //Hold `navWantOpen` to be the most recent value from the stream
     this.navWantOpen$.subscribe((open) => {
       this.navWantOpen = open;
     })
@@ -66,16 +74,10 @@ export class AppComponent implements AfterViewInit {
       this.navWantOpen$,
     ]).subscribe(([sidenav, isOpen, pinned, type, wantOpen]) => {
 
+      //TODO: Ensure this should be here
       this.navWantOpen = isOpen;
 
-      console.log([
-        sidenav,
-        isOpen,
-        pinned,
-        type,
-        wantOpen
-      ]);
-
+      //If pinned, force open.
       if (pinned) {
         sidenav?.open('program');
       }
