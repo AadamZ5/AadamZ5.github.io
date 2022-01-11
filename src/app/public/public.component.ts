@@ -23,7 +23,6 @@ export class PublicComponent implements AfterViewInit {
   rootSidenav: MatSidenav | undefined;
 
   constructor(
-    private bpo: BreakpointObserver,
     private meService: MeService,
     private sidenavHook: SidenavHook,
   ) {
@@ -32,12 +31,20 @@ export class PublicComponent implements AfterViewInit {
   }
 
   ngAfterViewInit(): void {
-    console.log(this.rootSidenav)
-    if (!this.rootSidenav) {
-      this.sidenavHook.hookSidenav(null);
-    } else {
-      this.sidenavHook.hookSidenav(this.rootSidenav);
-    }
+
+    /**
+     * This is to prevent the dreaded
+     * "Expression changed after it has been checked"
+     * error.
+     */
+    setTimeout(() => {
+      if (!this.rootSidenav) {
+        this.sidenavHook.hookSidenav(null);
+      } else {
+        this.sidenavHook.hookSidenav(this.rootSidenav);
+      }
+    });
+
   }
 
 }

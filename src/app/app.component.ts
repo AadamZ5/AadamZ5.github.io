@@ -2,8 +2,9 @@ import { AfterViewInit, Component } from '@angular/core';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { MeService } from './me.service';
 import { BehaviorSubject, combineLatest, Observable, Subscription } from 'rxjs';
-import { map, shareReplay, tap } from 'rxjs/operators';
+import { map, shareReplay, startWith, tap } from 'rxjs/operators';
 import { SidenavHook } from './sidenav-hook';
+import { defer } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -14,8 +15,8 @@ export class AppComponent implements AfterViewInit {
   title = 'My Website';
   //nav_open: boolean = false;
 
-  navOpen: boolean = false;
-  navOpen$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
+  navWantOpen: boolean = false;
+  navWantOpen$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
 
   navPinned$: Observable<boolean>;
   navType$: Observable<"over" | "side">;
@@ -53,43 +54,38 @@ export class AppComponent implements AfterViewInit {
 
   ngAfterViewInit(): void {
 
-    this.navOpen$.subscribe((open) => {
-      this.navOpen = open;
+    this.navWantOpen$.subscribe((open) => {
+      this.navWantOpen = open;
     })
 
-    let sidenavOpenSubscription: Subscription | undefined;
     combineLatest([
-      this.sidenavHook.sidenavInstance,
+      this.sidenavHook.sidenavInstance$,
+      this.sidenavHook.sidenavOpen$,
       this.navPinned$,
       this.navType$,
-      this.navOpen$,
-    ]).subscribe(([sidenav, pinned, type, open]) => {
+      this.navWantOpen$,
+    ]).subscribe(([sidenav, isOpen, pinned, type, wantOpen]) => {
 
-      sidenavOpenSubscription?.unsubscribe();
+      this.navWantOpen = isOpen;
 
       console.log([
         sidenav,
+        isOpen,
         pinned,
         type,
-        open
+        wantOpen
       ]);
 
       if (pinned) {
         sidenav?.open('program');
-      } else if (open) {
-        this.navOpen$.next(false);
       }
 
       if (sidenav) {
 
-        sidenavOpenSubscription = sidenav.openedChange.subscribe((open) => {
-          this.navOpen = open;
-        })
-
         sidenav.mode = type;
 
         if (!pinned) {
-          if (open) {
+          if (wantOpen) {
             sidenav.open();
           } else {
             sidenav.close();
@@ -102,7 +98,7 @@ export class AppComponent implements AfterViewInit {
   }
 
   toggleNav() {
-    this.navOpen$.next(!this.navOpen);
+    this.navWantOpen$.next(!this.navWantOpen);
   }
 
 }
