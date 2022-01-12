@@ -75,7 +75,9 @@ export class AppComponent implements AfterViewInit {
     ]).subscribe(([sidenav, isOpen, pinned, type, wantOpen]) => {
 
       //TODO: Ensure this should be here
-      this.navWantOpen = isOpen;
+      // if (isOpen === false && isOpen !== wantOpen) {
+      //   this.navWantOpen$.next(isOpen);
+      // }
 
       //If pinned, force open.
       if (pinned) {

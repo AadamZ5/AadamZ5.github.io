@@ -11,6 +11,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { PublicComponent } from './public.component';
 import { NgxMasonryModule } from 'ngx-masonry';
+import { ResumeComponent } from './resume/resume.component';
 
 const MODULE_ROUTES: Routes = [
   {
@@ -28,6 +29,10 @@ const MODULE_ROUTES: Routes = [
       {
         path: "about",
         component: AboutComponent,
+      },
+      {
+        path: "resume",
+        component: ResumeComponent,
       }
     ]
   },
@@ -39,6 +44,7 @@ const MODULE_ROUTES: Routes = [
     HomeComponent,
     AboutComponent,
     PublicComponent,
+    ResumeComponent,
   ],
   imports: [
     CommonModule,
